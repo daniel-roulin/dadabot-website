@@ -1,4 +1,5 @@
 import json
+import os
 import fitz
 import pdfCropMargins
 
@@ -80,8 +81,7 @@ def create_pdf(chapter_int, exercise_int):
     width = page.cropbox.width
     page.set_cropbox(fitz.Rect(0, top, width, bottom))
 
+    os.makedirs("temp", exist_ok=True)
     output.save("temp/temp.pdf", deflate=True, garbage=3)
-
     pdfCropMargins.crop(["temp/temp.pdf", "-o", "temp/answer.pdf"])
-
     print(f"Generated pdf for exercise {exercise} in chapter {chapter}")

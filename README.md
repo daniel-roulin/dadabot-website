@@ -3,14 +3,14 @@
 ## To start:
 ### Backend:
 
-    npm run build
+    uvicorn api:app --port 8001
 
 ### Frontend:
 
-    uvicorn api:app
+    npm run dev -- --port 8000
 
 ### Reverse proxy:
 
-    sudo nginx -c "/home/daniel/dadabot site/svelte/nginx.conf"
+    sudo nginx -c "PATH/TO/FOLDER/nginx.conf"
 
 
