@@ -4,7 +4,7 @@
     export let image_url;
 </script>
 
-<a href="/{chapter_number}">
+<a on:click href="/{chapter_number}">
     <div class="chapter-card">
         <img src="{image_url}" alt="{chapter_title} illustration">
         <div class="chapter-texts-container">

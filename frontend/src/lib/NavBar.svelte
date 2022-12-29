@@ -22,7 +22,7 @@ h2 {
     margin: 10px;
     margin-top: 20px;
     margin-bottom: 15px;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 20px;
     /* background-color: var(--background1); */
 }

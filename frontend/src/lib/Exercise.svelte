@@ -4,7 +4,7 @@
     export let exercise_summary;
 </script>
 
-<a href="{chapter_number}/{exercise_number}">
+<a on:click href="{chapter_number}/{exercise_number}">
     <div class="exercise-container">
         <h4 class="small-text-bold exercise-small-text-bold">Exercise {exercise_number}</h4>
         <p class="small-text exercise-small-text">{exercise_summary}</p>

@@ -1,15 +1,3 @@
-// import { chapters } from './TEMP_chapter_data';
-
-// export function load() {
-//     return {
-//         chapters: chapters.map((chapter) => ({
-//             chapter_number: chapter.number,
-//             chapter_title: chapter.title,
-//             image_url: chapter.image_url,
-//         }))
-//     }
-// }
-
 import Database from 'better-sqlite3';
 
 export function load() {
