@@ -1,8 +1,8 @@
 <script>
     export let data
 
-    import NavBar from "../../NavBar.svelte";
-	import PdfViewer from "./PdfViewer.svelte";
+    import NavBar from "$lib/NavBar.svelte";
+	import PdfViewer from "$lib/PdfViewer.svelte";
 
     $: pdf_path = `/api?chapter=${data.chapter_number}&exercise=${data.exercise_number}`
 </script>
