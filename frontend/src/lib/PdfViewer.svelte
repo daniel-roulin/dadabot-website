@@ -85,7 +85,6 @@
                         ready = true;
                         error = null;
                         rendering = false;
-                        console.log("Rendered page");
                         if (renderPending) {
                             renderPending = false;
                             render();
