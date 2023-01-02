@@ -12,3 +12,5 @@ vite.config.ts.timestamp-*
 .eslintrc.cjs
 .prettierrc
 .prettierignore
+/database/***
+!/database/database.db
