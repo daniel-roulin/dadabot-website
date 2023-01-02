@@ -1,6 +1,14 @@
 <script>
-    export let chapter = null;
-    export let exercise = null;
+	import { onMount } from "svelte";
+
+    let chapter = null;
+    let exercise = null;
+
+    onMount(() => {
+        let path = window.location.pathname.split("/");
+        chapter = path[1];
+        exercise = path[2];
+    })
 </script>
 
 <h2 class="subtitle-text">
@@ -11,7 +19,7 @@
     {/if}
     {#if exercise}
         <span class="highlight-text"> > </span>
-        <a href="/{exercise}">Exercise {exercise}</a>
+        <a href="/{chapter}/{exercise}">Exercise {exercise}</a>
     {/if}
 </h2>
 
