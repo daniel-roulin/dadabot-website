@@ -23,6 +23,7 @@ export function setRecentChapter(chapter_data) {
 }
 
 export function getRecentExercises() {
+    // FIXME: returns same exercises for all chapters
     var recent = localStorage.getItem("recentExercises");
     if (recent) {
         return JSON.parse(recent);
