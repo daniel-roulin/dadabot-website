@@ -1,15 +1,15 @@
 <script>
-    export let chapter_title;
-    export let chapter_number;
-    export let image_url;
+    export let title;
+    export let number;
+    export let image_path;
 </script>
 
-<a on:click href="/{chapter_number}">
+<a on:click href="/{number}">
     <div class="chapter-card">
-        <img src="{image_url}" alt="{chapter_title} illustration">
+        <img src="{image_path}" alt="{title} illustration">
         <div class="chapter-texts-container">
-            <h4 class="small-text-bold chapter-small-text-bold">Chapter {chapter_number}</h4>
-            <p class="small-text chapter-small-text">{chapter_title}</p>
+            <h4 class="small-text-bold chapter-small-text-bold">Chapter {number}</h4>
+            <p class="small-text chapter-small-text">{title}</p>
         </div>
     </div> 
 </a>

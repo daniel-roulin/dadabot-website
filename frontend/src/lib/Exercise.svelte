@@ -1,13 +1,13 @@
 <script>
-    export let chapter_number;
-    export let exercise_number;
-    export let exercise_summary;
+    export let chapter;
+    export let number;
+    export let content;
 </script>
 
-<a on:click href="{chapter_number}/{exercise_number}">
+<a on:click href="{chapter}/{number}">
     <div class="exercise-container">
-        <h4 class="small-text-bold exercise-small-text-bold">Exercise {exercise_number}</h4>
-        <p class="small-text exercise-small-text">{exercise_summary}</p>
+        <h4 class="small-text-bold exercise-small-text-bold">Exercise {number}</h4>
+        <p class="small-text exercise-small-text">{content}</p>
     </div>
 </a>
 
