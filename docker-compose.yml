@@ -5,8 +5,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    ports:
-      - 8001:8001
+    # ports:
+    #   - 8001:8001
     volumes:
       - /app/database:/frontend/database
     restart: always
@@ -17,8 +17,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    ports:
-      - 8002:8002
+    # ports:
+    #   - 8002:8002
     restart: always
 
   proxy:
@@ -29,5 +29,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - 80:80
-      - 8000:8000
+      # - 8000:8000
     restart: always
