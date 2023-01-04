@@ -10,7 +10,7 @@
     let all_exercises = data.exercises;
     $: recent_exercises = [];
     onMount(async () => {
-        recent_exercises = getRecentExercises();
+        recent_exercises = getRecentExercises(data.chapter);
     });
 </script>
 
@@ -26,7 +26,7 @@
 {#if (recent_exercises.length != 0)}
     <Subtitle text="Recent" />
     {#each recent_exercises as exercise, index}
-        <Exercise on:click={() => setRecentExercise(exercise)} {...exercise} />
+        <Exercise on:click={() => setRecentExercise(data.chapter, exercise)} {...exercise} />
         {#if !(index === recent_exercises.length-1)}
             <hr class="exercise-divider">
         {/if}
@@ -35,7 +35,7 @@
 
 <Subtitle text="All" />
 {#each all_exercises as exercise, index}
-    <Exercise on:click={() => setRecentExercise(exercise)} {...exercise} />
+    <Exercise on:click={() => setRecentExercise(data.chapter, exercise)} {...exercise} />
     {#if !(index === all_exercises.length-1)}
         <hr class="exercise-divider">
     {/if}

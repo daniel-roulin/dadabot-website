@@ -10,7 +10,7 @@ export function getRecentChapters() {
 export function setRecentChapter(chapter_data) {
     let recent = getRecentChapters();
     for (var i = 0; i < recent.length; i++) {
-        if (recent[i].chapter_number == chapter_data.chapter_number) {
+        if (recent[i].number == chapter_data.number) {
             recent.splice(i, 1);
             break;
         };
@@ -22,9 +22,8 @@ export function setRecentChapter(chapter_data) {
     localStorage.setItem("recentChapters", JSON.stringify(recent));
 }
 
-export function getRecentExercises() {
-    // FIXME: returns same exercises for all chapters
-    var recent = localStorage.getItem("recentExercises");
+export function getRecentExercises(chapter) {
+    var recent = localStorage.getItem(`chapter${chapter}RecentExercises`);
     if (recent) {
         return JSON.parse(recent);
     } else {
@@ -32,10 +31,10 @@ export function getRecentExercises() {
     }
 }
 
-export function setRecentExercise(exercise_data) {
-    let recent = getRecentExercises();
+export function setRecentExercise(chapter, exercise_data) {
+    let recent = getRecentExercises(chapter);
     for (var i = 0; i < recent.length; i++) {
-        if (recent[i].exercise_number == exercise_data.exercise_number) {
+        if (recent[i].number == exercise_data.number) {
             recent.splice(i, 1);
             break;
         };
@@ -44,5 +43,5 @@ export function setRecentExercise(exercise_data) {
     if (recent.length > 10) {
         recent.pop();
     }
-    localStorage.setItem("recentExercises", JSON.stringify(recent));
+    localStorage.setItem(`chapter${chapter}RecentExercises`, JSON.stringify(recent));
 }

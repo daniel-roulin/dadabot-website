@@ -7,5 +7,5 @@ export function load({ params }) {
 
     if (rows.length === 0) throw error(404);
 
-    return {chapter:params.chapter_number, exercises: rows}
+    return {chapter:params.chapter, exercises: rows}
 }
