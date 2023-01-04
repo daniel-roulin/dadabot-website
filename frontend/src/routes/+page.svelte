@@ -17,8 +17,5 @@
 	<meta name="description" content="Dadabot: Never do your physics homework again!" />
 </svelte:head>
 
-{#if (recent_chapters.length !== 0)}
-    <Chapters subtitle="Recent" chapters={recent_chapters} />
-{/if}
-
+<Chapters subtitle="Recent" chapters={recent_chapters} />
 <Chapters subtitle="All" chapters={all_chapters} />
