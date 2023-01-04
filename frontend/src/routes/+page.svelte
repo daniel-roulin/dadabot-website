@@ -1,9 +1,7 @@
 <script>
-	import Chapter from "$lib/Chapter.svelte";
-    import NavBar from "$lib/NavBar.svelte";
-    import Subtitle from "$lib/Subtitle.svelte";
-	import { onMount } from "svelte"; 
-    import { getRecentChapters, setRecentChapter } from "$lib/recent.js"
+	import Chapters from "$lib/Chapters.svelte";
+	import { onMount } from "svelte";
+    import { getRecentChapters } from "$lib/recent.js"
 
     export let data;
 
@@ -19,21 +17,8 @@
 	<meta name="description" content="Dadabot: Never do your physics homework again!" />
 </svelte:head>
 
-
-<NavBar />
-
 {#if (recent_chapters.length !== 0)}
-    <Subtitle text="Recent" />
-    <div class="chapters-container">
-        {#each recent_chapters as chapter}
-            <Chapter on:click={() => setRecentChapter(chapter)} {...chapter} />
-        {/each}
-    </div>
+    <Chapters subtitle="Recent" chapters={recent_chapters} />
 {/if}
 
-<Subtitle text="All" />
-<div class="chapters-container">
-    {#each all_chapters as chapter}
-        <Chapter on:click={() => setRecentChapter(chapter)} {...chapter} />
-    {/each}
-</div>
+<Chapters subtitle="All" chapters={all_chapters} />
