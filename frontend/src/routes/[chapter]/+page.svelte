@@ -1,9 +1,7 @@
 <script>
 	import { onMount } from "svelte"; 
-	import NavBar from "$lib/NavBar.svelte";
-    import Exercise from "$lib/Exercise.svelte";
-    import Subtitle from "$lib/Subtitle.svelte"; 
-    import { setRecentExercise, getRecentExercises } from "$lib/recent.js"
+    import Exercises from "$lib/Exercises.svelte";
+    import { getRecentExercises } from "$lib/recent.js"
 
     export let data;
 
@@ -19,32 +17,5 @@
 	<meta name="description" content="Exercises of chapter {data.chapter}" />
 </svelte:head>
 
-
-<NavBar />
-
-<!-- Idea: Exercises component: name="All", exercises="all_exercises" -->
-{#if (recent_exercises.length != 0)}
-    <Subtitle text="Recent" />
-    {#each recent_exercises as exercise, index}
-        <Exercise on:click={() => setRecentExercise(data.chapter, exercise)} {...exercise} />
-        {#if !(index === recent_exercises.length-1)}
-            <hr class="exercise-divider">
-        {/if}
-    {/each}
-{/if}
-
-<Subtitle text="All" />
-{#each all_exercises as exercise, index}
-    <Exercise on:click={() => setRecentExercise(data.chapter, exercise)} {...exercise} />
-    {#if !(index === all_exercises.length-1)}
-        <hr class="exercise-divider">
-    {/if}
-{/each}
-
-
-<style>
-.exercise-divider {
-    margin: 0px 10px;
-    border: 1px solid var(--secondary2);
-}
-</style>
+<Exercises subtitle="Recent" exercises={recent_exercises} chapter={data.chapter} />
+<Exercises subtitle="All" exercises={all_exercises} chapter={data.chapter} />
