@@ -12,6 +12,4 @@
 	<meta name="description" content="Exercise {data.exercise} of chapter {data.chapter}" />
 </svelte:head>
 
-<NavBar chapter={data.chapter} exercise={data.exercise} />
-
 <PdfViewer pdf_path={pdf_path} />
