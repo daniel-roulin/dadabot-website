@@ -17,5 +17,5 @@
 	<meta name="description" content="Exercises of chapter {data.chapter}" />
 </svelte:head>
 
-<Exercises subtitle="Recent" exercises={recent_exercises} chapter={data.chapter} />
-<Exercises subtitle="All" exercises={all_exercises} chapter={data.chapter} />
+<Exercises subtitle="Recent" exercises={recent_exercises}/>
+<Exercises subtitle="All" exercises={all_exercises}/>

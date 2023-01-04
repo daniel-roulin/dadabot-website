@@ -4,13 +4,12 @@
 
     export let exercises;
     export let subtitle;
-    export let chapter;
 </script>
 
 {#if (exercises.length != 0)}
     <Subtitle text="{subtitle}" />
     {#each exercises as exercise, index}
-        <a on:click={() => setRecentExercise(chapter, exercise)} href="{chapter}/{exercise.number}">
+        <a on:click={() => setRecentExercise(exercise.chapter, exercise)} href="{exercise.chapter}/{exercise.number}">
             <div class="exercise-container">
                 <h4 class="small-text-bold exercise-small-text-bold">Exercise {exercise.number}</h4>
                 <p class="small-text exercise-small-text">{exercise.content}</p>
