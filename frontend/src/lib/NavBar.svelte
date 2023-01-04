@@ -1,14 +1,9 @@
 <script>
-	import { onMount } from "svelte";
+	import { page } from '$app/stores';
 
-    let chapter = null;
-    let exercise = null;
-
-    onMount(() => {
-        let path = window.location.pathname.split("/");
-        chapter = path[1];
-        exercise = path[2];
-    })
+    $: path = $page.url ? $page.url.pathname.split("/") : ""
+    $: chapter = path[1];
+    $: exercise = path[2];
 </script>
 
 <h2 class="subtitle-text">
