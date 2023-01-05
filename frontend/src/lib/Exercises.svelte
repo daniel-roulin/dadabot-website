@@ -4,14 +4,19 @@
 
     export let exercises;
     export let subtitle;
+    export let search = false;
 </script>
 
-{#if (exercises.length != 0)}
+{#if (exercises.length !== 0)}
     <Subtitle text="{subtitle}" />
     {#each exercises as exercise, index}
-        <a on:click={() => setRecentExercise(exercise.chapter, exercise)} href="{exercise.chapter}/{exercise.number}">
+        <a on:click on:click={() => setRecentExercise(exercise.chapter, exercise)} href="{exercise.chapter}/{exercise.number}">
             <div class="exercise-container">
-                <h4 class="small-text-bold exercise-small-text-bold">Exercise {exercise.number}</h4>
+                {#if search}
+                    <h4 class="small-text-bold exercise-small-text-bold">Ch. {exercise.chapter} Ex. {exercise.number}</h4>
+                {:else}
+                    <h4 class="small-text-bold exercise-small-text-bold">Exercise {exercise.number}</h4>
+                {/if}
                 <p class="small-text exercise-small-text">{exercise.content}</p>
             </div>
         </a>
