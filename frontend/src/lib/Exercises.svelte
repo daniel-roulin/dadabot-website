@@ -10,7 +10,7 @@
 {#if (exercises.length !== 0)}
     <Subtitle text="{subtitle}" />
     {#each exercises as exercise, index}
-        <a on:click on:click={() => setRecentExercise(exercise.chapter, exercise)} href="{exercise.chapter}/{exercise.number}">
+        <a on:click on:click={() => setRecentExercise(exercise.chapter, exercise)} href="/{exercise.chapter}/{exercise.number}">
             <div class="exercise-container">
                 {#if search}
                     <h4 class="small-text-bold exercise-small-text-bold">Ch. {exercise.chapter} Ex. {exercise.number}</h4>
