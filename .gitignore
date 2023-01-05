@@ -1,2 +1,3 @@
 .vscode
 deploy.sh
+proxy/dev.conf
