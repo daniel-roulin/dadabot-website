@@ -2,10 +2,30 @@ import { error } from '@sveltejs/kit';
 import db from "$lib/db.js";
 
 export function load({ params }) {
-    const stmt = db.prepare('SELECT chapter, number, content FROM exercises WHERE chapter = ?;');
-    const rows = stmt.all(params.chapter);
+    let stmt = db.prepare(`
+    SELECT chapter, number, content
+    FROM exercises
+    WHERE chapter = ?
+    `);
+    const all_exercises = stmt.all(params.chapter);
 
-    if (rows.length === 0) throw error(404);
+    if (all_exercises.length === 0) throw error(404);
 
-    return {chapter:params.chapter, exercises: rows}
+    stmt = db.prepare(`
+    SELECT chapter, number, content
+    FROM exercises
+    WHERE  chapter = ? AND last_consulted IS NOT NULL
+    ORDER BY last_consulted DESC
+    LIMIT 5
+    `);
+    const trending_exercises = stmt.all(params.chapter)
+
+    stmt = db.prepare(`
+    UPDATE chapters
+    SET last_consulted = CURRENT_TIMESTAMP
+    WHERE number = ?
+    `)
+    stmt.run(params.chapter)
+
+    return {chapter:params.chapter, all_exercises: all_exercises, trending_exercises:trending_exercises}
 }

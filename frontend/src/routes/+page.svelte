@@ -5,7 +5,8 @@
 
     export let data;
 
-    let all_chapters = data.chapters;
+    let all_chapters = data.all_chapters;
+    let trending_chapters = data.trending_chapters;
     $: recent_chapters = [];
     onMount(async () => {
         recent_chapters = getRecentChapters();
@@ -18,4 +19,5 @@
 </svelte:head>
 
 <Chapters subtitle="Recent" chapters={recent_chapters} />
+<Chapters subtitle="Trending" chapters={trending_chapters} />
 <Chapters subtitle="All" chapters={all_chapters} />

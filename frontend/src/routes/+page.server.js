@@ -1,8 +1,21 @@
 import db from "$lib/db.js"
 
 export function load() {
-    const stmt = db.prepare('SELECT number, title, image_path FROM chapters ORDER BY number');
-    const rows = stmt.all();
+    let stmt = db.prepare(`
+    SELECT number, title, image_path
+    FROM chapters
+    ORDER BY number
+    `);
+    const all_chapters = stmt.all();
 
-    return {chapters: rows}
+    stmt = db.prepare(`
+    SELECT number, title, image_path 
+    FROM chapters
+    WHERE last_consulted IS NOT NULL
+    ORDER BY last_consulted DESC
+    LIMIT 5
+    `);
+    const trending_chapters = stmt.all();
+
+    return {all_chapters: all_chapters, trending_chapters: trending_chapters}
 }
