@@ -24,7 +24,7 @@
 	
 	{#if search}
 		{#if result_exercises.length !== 0}
-			<Exercises on:click={() => {search = ""}} search={true} subtitle="Results" exercises={result_exercises} />
+			<Exercises on:click={() => {search = ""}} search={search} subtitle="Results" exercises={result_exercises} />
 		{:else}
 			<Subtitle text="No results" />
 		{/if}
