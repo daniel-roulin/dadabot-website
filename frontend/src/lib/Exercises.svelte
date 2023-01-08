@@ -7,9 +7,10 @@
     export let search = null;
 
     function snippet(content, search) {
-        const startMarker = "<span class=\"highlight-text\">"
-        const endMarker = "</span>"
-        const pattern = new RegExp(search, "i")
+        if (search.length <= 2) return content;
+        const startMarker = "<span class=\"highlight-text\">";
+        const endMarker = "</span>";
+        const pattern = new RegExp(search, "i");
         let finalString = "";
         while (true) {
             let match = content.search(pattern);
@@ -24,8 +25,8 @@
             finalString += content.slice(start, match)
                         + startMarker
                         + content.slice(match, match + search.length)
-                        + endMarker
-            content = content.slice(match + search.length)
+                        + endMarker;
+            content = content.slice(match + search.length);
         }
         return finalString + content;
     }
