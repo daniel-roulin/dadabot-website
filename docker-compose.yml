@@ -1,33 +1,20 @@
 services:
   frontend:
-    container_name: frontend
-    image: frontend
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    # ports:
-    #   - 8001:8001
+    image: dadarou/frontend
+    build: frontend
     volumes:
-      - /app/database:/frontend/database
+      # VOLUME:CONTAINER_PATH
+      - ~/website-volume/database:/app/database
     restart: always
 
   backend:
-    container_name: backend
-    image: backend
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    # ports:
-    #   - 8002:8002
+    image: dadarou/backend
+    build: backend
     restart: always
 
   proxy:
-    container_name: proxy
-    image: proxy
-    build:
-      context: ./proxy
-      dockerfile: Dockerfile
+    image: dadarou/proxy
+    build: proxy
     ports:
       - 80:80
-      # - 8000:8000
     restart: always
