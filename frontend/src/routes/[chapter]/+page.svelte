@@ -15,7 +15,12 @@
 
 <svelte:head>
 	<title>Chapter {data.chapter}</title>
+    <meta property="og:title" content="Chapter {data.chapter}">
+    <meta name="twitter:title" content="Chapter {data.chapter}">
+    
 	<meta name="description" content="Exercises of chapter {data.chapter}" />
+    <meta property="og:description" content="Exercises of chapter {data.chapter}">
+    <meta name="twitter:description" content="Exercises of chapter {data.chapter}">
 </svelte:head>
 
 <Exercises subtitle="Recent" exercises={recent_exercises}/>

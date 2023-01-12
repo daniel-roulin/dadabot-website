@@ -15,7 +15,12 @@
 
 <svelte:head>
 	<title>Dadabot</title>
+    <meta property="og:title" content="Dadabot">
+    <meta name="twitter:title" content="Dadabot">
+    
 	<meta name="description" content="Dadabot: Never do your physics homework again!" />
+    <meta property="og:description" content="Dadabot: Never do your physics homework again!">
+    <meta name="twitter:description" content="Dadabot: Never do your physics homework again!">
 </svelte:head>
 
 <Chapters subtitle="Recent" chapters={recent_chapters} />
