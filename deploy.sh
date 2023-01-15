@@ -3,7 +3,7 @@
 printf "Using local context...\n"
 docker context use default
 
-printf "\nBuilding images with no cache...\n"
+printf "\nBuilding images...\n"
 # docker compose build --no-cache
 docker compose build
 
@@ -19,10 +19,20 @@ do
   printf "\nRemoving failed, trying again...\n"
 done
 
-printf "\nPulling images...\n"
-while ! docker compose pull
+printf "\nPulling frontend...\n"
+while ! docker compose pull frontend
 do
-  printf "\Pulling failed, trying again...\n"
+  printf "Pulling frontend failed, trying again...\n"
+done
+printf "\nPulling backend...\n"
+while ! docker compose pull backend
+do
+  printf "Pulling backend failed, trying again...\n"
+done
+printf "\nPulling proxy...\n"
+while ! docker compose pull proxy
+do
+  printf "Pulling proxy failed, trying again...\n"
 done
 
 printf "\nWARNING: About to start new container. If you need to modifiy the production database, do it NOW!\n"
