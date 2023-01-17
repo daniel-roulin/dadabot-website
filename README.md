@@ -14,3 +14,7 @@
     sudo nginx -c "PATH/TO/FOLDER/nginx.conf"
 
 
+## Notes:
+Converting png to webp and resizing:
+
+    mogrify -format webp -resize 250x150\! chapter*.jpg

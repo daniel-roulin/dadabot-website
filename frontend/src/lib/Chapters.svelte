@@ -1,7 +1,6 @@
 <script>
     import Subtitle from "$lib/Subtitle.svelte";
     import { setRecentChapter } from "$lib/recent.js"
-	import { onMount } from "svelte";
 
     export let chapters;
     export let subtitle;
@@ -13,9 +12,9 @@
         {#each chapters as chapter}
             <a on:click={() => setRecentChapter(chapter)} href="/{chapter.number}">
                 <div class="chapter-card">
-                    <img src="{chapter.image_path}" alt="{chapter.title} illustration">
+                    <img src="/images/chapter{chapter.number}.webp" alt="{chapter.title} illustration">
                     <div class="chapter-texts-container">
-                        <h4 class="small-text-bold chapter-small-text-bold">Chapter {chapter.number}</h4>
+                        <h3 class="small-text-bold chapter-small-text-bold">Chapter {chapter.number}</h3>
                         <p class="small-text chapter-small-text">{chapter.title}</p>
                     </div>
                 </div> 
