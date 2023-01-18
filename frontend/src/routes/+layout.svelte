@@ -6,28 +6,39 @@
 	import Subtitle from '$lib/Subtitle.svelte'
 	import './styles.css';
 
-	let search;
-	let result_exercises = [];
+	import { queryParam } from "sveltekit-search-params";
+	import { page } from '$app/stores';
+	
+	let search = queryParam("search");
+	let result_exercises_promise;
+	update_search();
 
-	async function update_search(value) {
+	function update_search() {
+		let value = $search
 		if (value && value.trim().length > 0) {
-			result_exercises = await fetch(`/search?q=${value.trim()}`).then((v) => v.json());
-		} else {
-			result_exercises = [];
+			result_exercises_promise = fetch_search_results(value);
 		}
 	}
-	$: update_search(search);
+
+	async function fetch_search_results(value) {
+		let res = await fetch(`/search?q=${value.trim()}`);
+		return await res.json();
+	}
 </script>
 
 <div class="app">
-	<Header bind:search/>
+	<Header bind:search={$search} on:input={update_search}/>
 	
-	{#if search}
-		{#if result_exercises.length !== 0}
-			<Exercises on:click={() => {search = ""}} search={search} subtitle="Results" exercises={result_exercises} />
-		{:else}
-			<Subtitle text="No results" />
-		{/if}
+	{#if $search && $search.trim().length > 0}
+		{#await result_exercises_promise}
+			<Subtitle text="Loading..." />
+		{:then results} 
+			{#if results.length !== 0}
+				<Exercises search={$search} subtitle="Results" exercises={results} />
+			{:else}
+				<Subtitle text="No results" />
+			{/if}
+		{/await}
 	{:else}
 		<NavBar />
 		<slot />
