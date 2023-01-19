@@ -10,15 +10,15 @@
     <Subtitle text="{subtitle}" />
     <div class="chapters-container">
         {#each chapters as chapter}
+        <div class="chapter-card">
             <a on:click={() => setRecentChapter(chapter)} href="/{chapter.number}">
-                <div class="chapter-card">
                     <img src="/images/chapter{chapter.number}.webp" alt="{chapter.title} illustration">
                     <div class="chapter-texts-container">
                         <h3 class="small-text-bold chapter-small-text-bold">Chapter {chapter.number}</h3>
                         <p class="small-text chapter-small-text">{chapter.title}</p>
                     </div>
-                </div> 
-            </a>
+                </a>
+            </div> 
         {/each}
     </div>
 {/if}
@@ -32,13 +32,13 @@
     width: 250px;
     margin: 10px;
 }
-@media screen and (max-width:375px) {
+@media screen and (max-width:550px) {
 .chapter-card {
-    width:95%;
+    flex-grow: 1;
 }
 }
 
-.chapter-card>img {
+img {
     border-radius: 5px 5px 0 0;
     width: 100%;
     height: 150px;
