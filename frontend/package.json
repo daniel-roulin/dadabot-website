@@ -25,6 +25,6 @@
 	"dependencies": {
 		"@sveltejs/adapter-node": "^1.0.0-next.106",
 		"better-sqlite3": "^8.0.1",
-		"pdfjs-dist": "^2.14.305"
+		"pdfjs-dist": "^2.16.105"
 	}
 }

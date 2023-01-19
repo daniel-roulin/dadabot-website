@@ -8,8 +8,8 @@
     $: error = null;
     
     onMount(async () => {
-        const pdfjsLib = await import('pdfjs-dist/build/pdf');
-        const pdfjsWorker = await import('pdfjs-dist/build/pdf.worker.entry');
+        const pdfjsLib = await import('pdfjs-dist/legacy/build/pdf');
+        const pdfjsWorker = await import('pdfjs-dist/legacy/build/pdf.worker.entry');
         pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
         
         var canvas = document.getElementById('pdf_renderer');
