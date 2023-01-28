@@ -2,8 +2,11 @@
     import Subtitle from "$lib/Subtitle.svelte";
     import { setRecentChapter } from "$lib/recent.js"
 
+    import snippet from "$lib/snippet.js"
+
     export let chapters;
     export let subtitle;
+    export let search = null;
 </script>
 
 {#if (chapters.length !== 0)}
@@ -15,7 +18,11 @@
                     <img src="/images/chapter{chapter.number}.webp" alt="{chapter.title} illustration">
                     <div class="chapter-texts-container">
                         <h3 class="small-text-bold chapter-small-text-bold">Chapter {chapter.number}</h3>
-                        <p class="small-text chapter-small-text">{chapter.title}</p>
+                        {#if search}
+                            <p class="small-text chapter-small-text">{@html snippet(chapter.title, search, 0, false)}</p>
+                        {:else}
+                            <p class="small-text chapter-small-text">{chapter.title}</p>
+                        {/if}
                     </div>
                 </a>
             </div> 

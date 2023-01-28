@@ -3,20 +3,19 @@
 	import Footer from '$lib/Footer.svelte';
 	import NavBar from '$lib/NavBar.svelte';
 	import Exercises from '$lib/Exercises.svelte';
+	import Chapters from '$lib/Chapters.svelte';
 	import Subtitle from '$lib/Subtitle.svelte'
 	import './styles.css';
-
 	import { queryParam } from "sveltekit-search-params";
-	import { page } from '$app/stores';
 	
 	let search = queryParam("search");
-	let result_exercises_promise;
+	let result_promise;
 	update_search();
 
 	function update_search() {
 		let value = $search
 		if (value && value.trim().length > 0) {
-			result_exercises_promise = fetch_search_results(value);
+			result_promise = fetch_search_results(value);
 		}
 	}
 
@@ -28,13 +27,15 @@
 
 <div class="app">
 	<Header bind:search={$search} on:input={update_search}/>
+	<!-- <Header placeholder={chapter ? "Search chapter " + chapter + "..." : "Search..."} bind:search={$search} on:input={update_search}/> -->
 	
 	{#if $search && $search.trim().length > 0}
-		{#await result_exercises_promise}
+		{#await result_promise}
 			<Subtitle text="Loading..." />
 		{:then results} 
-			{#if results.length !== 0}
-				<Exercises search={$search} subtitle="Results" exercises={results} />
+			{#if results.chapters.length !== 0 || results.exercises.length !== 0}
+				<Chapters search={$search} subtitle="Chapters" chapters={results.chapters} />
+				<Exercises search={$search} subtitle="Exercises" exercises={results.exercises} />
 			{:else}
 				<Subtitle text="No results" />
 			{/if}
