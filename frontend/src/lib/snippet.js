@@ -2,8 +2,8 @@
 
 export default function snippet(content, search, limit, crop) {
     if (search.length <= limit) return content;
-    const startMarker = "<span class=\"highlight-text\">";
-    const endMarker = "</span>";
+    const startMarker = "<em>";
+    const endMarker = "</em>";
     const pattern = new RegExp(search, "i");
     let finalString = "";
     for (;;) {

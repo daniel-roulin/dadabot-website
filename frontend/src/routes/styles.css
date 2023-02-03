@@ -41,7 +41,8 @@ a {
     font-size: 14px;
 }
 
-.highlight-text {
+em {
+    font-style: normal;
     color: var(--accent);
 }
 
