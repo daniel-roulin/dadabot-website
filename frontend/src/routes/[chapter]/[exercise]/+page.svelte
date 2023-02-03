@@ -1,5 +1,4 @@
 <script>
-    import NavBar from "$lib/NavBar.svelte";
     import PdfViewer from "$lib/PdfViewer.svelte";
 
     export let data

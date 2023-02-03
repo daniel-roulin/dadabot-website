@@ -7,7 +7,10 @@
 	import Subtitle from '$lib/Subtitle.svelte'
 	import './styles.css';
 	import { queryParam } from "sveltekit-search-params";
-	
+	import { page } from '$app/stores';
+
+	$: chapter = $page.data.chapter;
+
 	let search = queryParam("search");
 	let result_promise;
 	update_search();
@@ -20,14 +23,18 @@
 	}
 
 	async function fetch_search_results(value) {
-		let res = await fetch(`/search?q=${value.trim()}`);
+		let url = `/search?q=${value.trim()}`
+		if (chapter) {
+			url += `&ch=${chapter}`
+		}
+		let res = await fetch(url);
 		return await res.json();
 	}
 </script>
 
 <div class="app">
-	<Header bind:search={$search} on:input={update_search}/>
-	<!-- <Header placeholder={chapter ? "Search chapter " + chapter + "..." : "Search..."} bind:search={$search} on:input={update_search}/> -->
+	<!-- <Header bind:search={$search} on:input={update_search}/> -->
+	<Header placeholder={chapter ? "Search in chapter " + chapter + "..." : "Search..."} bind:search={$search} on:input={update_search}/>
 	
 	{#if $search && $search.trim().length > 0}
 		{#await result_promise}
