@@ -12,9 +12,11 @@ for chapter, exercises in index.items():
         content = get_ex_text(int(chapter), int(exercise))
         data.append((chapter, exercise, content))
 
+print(data)
 print("Writing to database...")
+# con = sqlite3.connect("prod_database.db")
 con = sqlite3.connect("../frontend/database/database.db")
 cur = con.cursor()
-cur.executemany("INSERT INTO exercises (chapter_id, number, content) VALUES (?, ?, ?)", data)
-con.commit() 
+cur.executemany("INSERT INTO exercises (chapter, number, content) VALUES (?, ?, ?)", data)
+con.commit()
 print("Done.")
