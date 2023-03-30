@@ -35,7 +35,7 @@ do
   printf "Pulling proxy failed, trying again...\n"
 done
 
-printf "\nWARNING: About to start new container. If you need to modifiy the production database, do it NOW!\n"
+printf "\nWARNING: About to start new containers. If you need to modifiy the production database, do it NOW!\n"
 printf "Press enter when ready to continue:\n"
 read
 
