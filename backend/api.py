@@ -8,6 +8,6 @@ app = FastAPI()
 
 
 @app.get("/api")
-def answer(chapter:int, exercise:int):
+def answer(chapter: int, exercise: int):
     create_pdf(chapter, exercise)
     return FileResponse("temp/answer.pdf")

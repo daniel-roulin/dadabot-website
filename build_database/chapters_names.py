@@ -1,6 +1,7 @@
 import json
 from bs4 import BeautifulSoup
 
+# https://bcs.wiley.com/he-bcs/Books?action=contents&itemId=0471320005&bcsId=1074
 with open("chapter.html") as f:
     soup = BeautifulSoup(f, "html.parser")
 

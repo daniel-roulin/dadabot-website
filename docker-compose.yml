@@ -4,7 +4,10 @@ services:
     build: frontend
     volumes:
       # VOLUME:CONTAINER_PATH
+      ## PROD ##
       - ~/website-volume/database:/app/database
+      ## DEV ##
+      # - /home/daniel/dadabot site/website-final/frontend/database:/app/database
     restart: always
 
   backend:
