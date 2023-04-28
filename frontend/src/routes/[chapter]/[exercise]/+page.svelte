@@ -1,9 +1,9 @@
 <script>
-    import PdfViewer from "$lib/PdfViewer.svelte";
+    import Button from "$lib/Button.svelte"
 
     export let data
 
-    $: pdf_path = `/api?chapter=${data.chapter}&exercise=${data.exercise}`
+    $: base_path = `/api?chapter=${data.chapter}&exercise=${data.exercise}`
 </script>
 
 <svelte:head>
@@ -16,4 +16,14 @@
     <meta name="twitter:description" content="Exercise {data.exercise} of chapter {data.chapter}">
 </svelte:head>
 
-<PdfViewer pdf_path={pdf_path} />
+<div class="img-container">
+    <img src={base_path + "&output_format=img-light"} alt="Answer">
+</div>
+
+<Button text="See pdf" on:click={() => {window.location.href = base_path + "&output_format=pdf"}} />
+
+<style>
+img {
+    width: 100%;
+}
+</style>

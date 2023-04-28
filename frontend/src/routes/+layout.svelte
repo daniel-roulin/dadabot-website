@@ -39,7 +39,7 @@
 	{#if $search && $search.trim().length > 0}
 		{#await result_promise}
 			<Subtitle text="Loading..." />
-		{:then results} 
+		{:then results}
 			{#if results.chapters.length !== 0 || results.exercises.length !== 0}
 				<Chapters search={$search} subtitle="Chapters" chapters={results.chapters} />
 				<Exercises search={$search} subtitle="Exercises" exercises={results.exercises} />

@@ -1,5 +1,5 @@
 <footer>
-    Made with <span class="highlight-text">❤</span> by Daniel
+    Made with <em>❤</em> by Daniel
     <!-- , hosted on <a class="link" href="https://katroi.net/">katroi.net</a> by Alam -->
     &nbsp;
 </footer>

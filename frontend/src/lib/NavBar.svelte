@@ -9,11 +9,11 @@
 <h2 class="subtitle-text">
     <a href="/">Chapters</a>
     {#if chapter}
-        <span class="highlight-text"> > </span>
+        <em> > </em>
         <a href="/{chapter}">Chapter {chapter}</a>
     {/if}
     {#if exercise}
-        <span class="highlight-text"> > </span>
+        <em> > </em>
         <a href="/{chapter}/{exercise}">Exercise {exercise}</a>
     {/if}
 </h2>

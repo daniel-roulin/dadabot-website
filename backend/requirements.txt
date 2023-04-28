@@ -3,3 +3,4 @@ uvicorn==0.20.0
 PyMuPDF==1.19.1
 PyPDF2==1.26.0
 pdfCropMargins==1.0.5
+pdf2image==1.16.0
